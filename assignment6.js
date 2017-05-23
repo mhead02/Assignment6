@@ -10,22 +10,24 @@ $( document ).ready(function(){
 //output F temperature to page
 
 
-$("#currentTemp").val(convertTemp);
+	$("#convert").click(convertTemp);
 
-function convertTemp(){
-	var celsius = $("#currentTemp").val();
-	var fahrenheit = (celsius * (9/5)) + 32;
-
-if( fahrenheit > 85)
-	$("body").attr("class" , "#desert");
-else if ( fahrenheit < 50 )
-	$("body").attr("class" , "#cold");
-else if ( fahrenheit > 50 && fahrenheit < 85)
-	$("body").attr("class" , "#GreatMeadows");
-}
+	function convertTemp(){
+		event.preventDefault();
+		var celsius = $("#currentTemp").val();
+		celsius = Number(celsius);
+		var fahrenheit = (celsius * (9/5)) + 32;
+		fahrenheit = Number(fahrenheit);
 
 
+		if( fahrenheit > 85){
+			$("body").attr("class" , "desert");
+		} else if ( fahrenheit < 50 ){
+			$("body").attr("class" , "cold");
+		} else if ( fahrenheit > 50 && fahrenheit < 85){
+			$("body").attr("class" , "GreatMeadows");
+		}
+	}
 
 
-
-});
+}); 
